@@ -1,0 +1,9 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Star outline -->
+  <path d="M50 12L57 35L82 35L63 50L70 73L50 60L30 73L37 50L18 35L43 35Z" 
+        stroke="currentColor" stroke-width="5" fill="none" stroke-linejoin="round"/>
+
+  <!-- Certificate ribbon -->
+  <path d="M40 78L50 85L60 78V88L50 92L40 88V78Z" 
+        stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round"/>
+</svg>
