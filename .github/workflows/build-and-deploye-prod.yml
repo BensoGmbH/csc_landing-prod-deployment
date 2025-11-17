@@ -1,0 +1,49 @@
+name: "[prod] build and deploy www.cryptosignalcircle.com"
+on:
+  workflow_dispatch:
+    inputs:
+      branchname:
+        description: 'Which branch, tag or SHA should be deployed? (empty for default branch)'
+        required: false
+        default: ''
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check-out App 
+        uses: actions/checkout@v4
+        with:
+          repository: BensoGmbH/crypto-landing
+          token: ${{ secrets.GH_SERVICE_ACCOUNT }}
+          ref: ${{ github.event.inputs.branchname }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: npm run build:prod
+
+      - name: Create CNAME File for GH Pages
+        run: echo "www.cryptosignalcircle.com">./build/CNAME
+
+      - name: Publish
+        uses: s0/git-publish-subdir-action@master
+        env:
+          REPO: self
+          BRANCH: deployment
+          FOLDER: build
+          SQUASH_HISTORY: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
