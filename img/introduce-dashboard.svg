@@ -1,0 +1,122 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        /* Total animation duration: 7 seconds, infinite loop */
+        .chaos-scene-anim { animation: chaos-scene-anim 7s ease-in-out infinite; }
+        .clarity-scene-anim { animation: clarity-scene-anim 7s ease-in-out infinite; }
+        .scrolling-text-anim { animation: scroll-anim 2.5s linear infinite; }
+        .missed-trade-anim { animation: blink-anim 1s step-end infinite; }
+        .trade-card-anim { opacity: 0; animation: card-fade-in-anim 7s ease-in-out infinite; }
+        .live-dot-anim { animation: live-blink-anim 2s ease-in-out infinite; }
+
+        /* Scene 1: Chaos Animation */
+        @keyframes chaos-scene-anim {
+        0%, 28%, 100% { transform: translateX(0); opacity: 1; }
+        42%, 92% { transform: translateX(-50%); opacity: 0; }
+        }
+
+        /* Scene 2: Clarity Animation */
+        @keyframes clarity-scene-anim {
+        0%, 28% { transform: translateX(50%); opacity: 0; }
+        42%, 92% { transform: translateX(0); opacity: 1; }
+        100% { transform: translateX(0) scale(0.95); opacity: 0; }
+        }
+
+        /* Text Scroll Animation */
+        @keyframes scroll-anim {
+        from { transform: translateY(0); }
+        to { transform: translateY(-150px); }
+        }
+
+        /* Blinking for missed trades */
+        @keyframes blink-anim {
+        50% { opacity: 0.2; }
+        }
+
+        /* Fade-in for Trade Cards */
+        @keyframes card-fade-in-anim {
+        0%, 42% { transform: translateY(10px); opacity: 0; }
+        50% { transform: translateY(0); opacity: 1; }
+        92% { transform: translateY(0); opacity: 1; }
+        100% { opacity: 0; }
+        }
+
+        /* Blinking for "Live" Badge */
+        @keyframes live-blink-anim {
+        50% { opacity: 0.3; }
+        }
+    </style>
+
+    <!-- Background -->
+    <rect width="800" height="450" fill="#1E293B"/>
+
+    <!-- ===================================================== -->
+    <!-- SCENE 1: CHAOS                                        -->
+    <!-- ===================================================== -->
+    <g id="chaos-scene" class="chaos-scene-anim">
+        <defs>
+            <clipPath id="chat-mask">
+                <rect x="150" y="50" width="500" height="350" rx="8"/>
+            </clipPath>
+        </defs>
+        <rect x="150" y="50" width="500" height="350" fill="#334155" rx="8"/>
+        <g clip-path="url(#chat-mask)">
+            <g id="scrolling-text" class="scrolling-text-anim">
+                <rect id="missed-trade-1" class="missed-trade-anim" x="160" y="80" width="250" height="24" fill="#EF4444" rx="4" opacity="0.8"/>
+                <rect id="missed-trade-2" class="missed-trade-anim" x="160" y="250" width="200" height="24" fill="#EF4444" rx="4" opacity="0.8"/>
+                <text x="170" y="70" font-family="monospace" font-size="14" fill="#CBD5E1">UserA: BTC long entry @ 68500</text>
+                <text x="170" y="100" font-family="monospace" font-size="14" fill="#94A3B8">UserB: missed it 😭</text>
+                <text x="170" y="130" font-family="monospace" font-size="14" fill="#CBD5E1">UserC: what's the SL for ETH?</text>
+                <text x="170" y="160" font-family="monospace" font-size="14" fill="#CBD5E1">Admin: TP1 hit on BTC! 🔥</text>
+                <text x="170" y="190" font-family="monospace" font-size="14" fill="#94A3B8">UserD: which btc trade?</text>
+                <text x="170" y="220" font-family="monospace" font-size="14" fill="#CBD5E1">UserA: close SOL now!!</text>
+                <text x="170" y="270" font-family="monospace" font-size="14" fill="#94A3B8">UserE: too late...</text>
+                <text x="170" y="300" font-family="monospace" font-size="14" fill="#CBD5E1">Admin: New signal: ADA/USDT SHORT</text>
+                <text x="170" y="330" font-family="monospace" font-size="14" fill="#94A3B8">UserF: already pumping</text>
+                <text x="170" y="360" font-family="monospace" font-size="14" fill="#CBD5E1">UserG: 🚀u003c</text>
+                <text x="170" y="390" font-family="monospace" font-size="14" fill="#CBD5E1">Admin: BTC entry was 68500 not 68k</text>
+            </g>
+        </g>
+    </g>
+
+    <!-- ===================================================== -->
+    <!-- SCENE 2: CLARITY                                      -->
+    <!-- ===================================================== -->
+    <g id="clarity-scene" class="clarity-scene-anim">
+        <rect x="150" y="50" width="500" height="350" fill="#0F172A" rx="8"/>
+
+        <!-- Trade Card 1 (Profit) -->
+        <g id="trade-card-1" class="trade-card-anim">
+            <rect x="170" y="70" width="460" height="80" fill="#1E293B" rx="6"/>
+            <path d="M185 125 L195 115 L205 120 L215 110 L225 115" stroke="#22C55E" stroke-width="2" fill="none"/>
+            <text x="240" y="95" font-family="sans-serif" font-weight="bold" font-size="18" fill="white">BTC/USDT</text>
+            <text x="240" y="120" font-family="sans-serif" font-size="14" fill="#22C55E">LONG</text>
+            <text id="pnl-1" x="620" y="108" font-family="sans-serif" font-weight="bold" font-size="24" fill="#22C55E" text-anchor="end">+12.5%</text>
+            <g id="live-badge-1">
+                <circle class="live-dot-anim" cx="340" cy="114" r="4" fill="#22C55E"/>
+                <text x="350" y="120" font-family="sans-serif" font-size="12" fill="#94A3B8">Live</text>
+            </g>
+        </g>
+
+        <!-- Trade Card 2 (Loss) -->
+        <g id="trade-card-2" class="trade-card-anim" style="animation-delay: 0.2s;">
+            <rect x="170" y="170" width="460" height="80" fill="#1E293B" rx="6"/>
+            <path d="M185 225 L195 235 L205 230 L215 240 L225 235" stroke="#EF4444" stroke-width="2" fill="none"/>
+            <text x="240" y="195" font-family="sans-serif" font-weight="bold" font-size="18" fill="white">ETH/USDT</text>
+            <text x="240" y="220" font-family="sans-serif" font-size="14" fill="#EF4444">SHORT</text>
+            <text id="pnl-2" x="620" y="208" font-family="sans-serif" font-weight="bold" font-size="24" fill="#EF4444" text-anchor="end">-4.2%</text>
+            <g id="live-badge-2">
+                <circle class="live-dot-anim" cx="340" cy="214" r="4" fill="#22C55E"/>
+                <text x="350" y="220" font-family="sans-serif" font-size="12" fill="#94A3B8">Live</text>
+            </g>
+        </g>
+
+        <!-- Trade Card 3 (Neutral) -->
+        <g id="trade-card-3" class="trade-card-anim" style="animation-delay: 0.4s;">
+            <rect x="170" y="270" width="460" height="80" fill="#1E293B" rx="6"/>
+            <path d="M185 325 L225 325" stroke="#94A3B8" stroke-width="2" fill="none"/>
+            <text x="240" y="295" font-family="sans-serif" font-weight="bold" font-size="18" fill="white">SOL/USDT</text>
+            <text x="240" y="320" font-family="sans-serif" font-size="14" fill="#94A3B8">LONG</text>
+            <text id="pnl-3" x="620" y="308" font-family="sans-serif" font-weight="bold" font-size="24" fill="#94A3B8" text-anchor="end">+0.1%</text>
+        </g>
+    </g>
+</svg>
