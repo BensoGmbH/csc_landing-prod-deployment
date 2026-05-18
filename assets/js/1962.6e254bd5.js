@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcrypto_landing=self.webpackChunkcrypto_landing||[]).push([["1962"],{4737(e,c,a){a.d(c,{createPieServices:()=>n.f});var n=a(532);a(6921)}}]);

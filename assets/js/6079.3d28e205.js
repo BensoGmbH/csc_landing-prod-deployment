@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcrypto_landing=self.webpackChunkcrypto_landing||[]).push([["6079"],{6402(e,c,r){r.d(c,{createArchitectureServices:()=>t.S});var t=r(5016);r(6921)}}]);

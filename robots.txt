@@ -1,0 +1,9 @@
+# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+#
+# To allow most search engines access to the whole site
+# you can just use the following two lines:
+User-agent: *
+Allow: /
+
+# Point to the sitemap
+Sitemap: https://cryptosignalcircle.com/sitemap.xml
